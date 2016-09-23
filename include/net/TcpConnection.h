@@ -6,7 +6,6 @@
 #include "net/InternetAddress.h"
 #include "net/Socket.h"
 #include "base/Noncopyable.h"
-#include "base/StringPiece.h"
 #include "net/Channel.h"
 #include "net/ChannelBuffer.h"
 
@@ -46,7 +45,6 @@ namespace Net
 		const InternetAddress& GetPeerAddress() const { return peerAddress_; }
 
 		void Send(const void* message, int len);
-		void Send(const StringPiece& message);
 		void Send(ChannelBuffer* message);  
 		void ShutDownWriteForHalfClose();
 
@@ -58,7 +56,6 @@ namespace Net
 		void HandleError();
 		void SetState(ConnectionState s) { connectionState_ = s; }
 		
-		void SendStringPieceInLoop(const StringPiece& message) ;
 		void SendDataInLoop(const void* message, size_t len);
 		
 
